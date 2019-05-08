@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<title>ChatExercise</title>
+</head>
+<body>
+	<form class="form-horizontal" th:action="@{/sign_in}" method="post">
+	<fieldset>
+	<!-- Form Name -->
+	<legend>Login</legend>
+    <div th:if="${param.logout}">
+            You have been logged out.
+    </div>
+    <div th:if="${param.error}">
+            Invalid username and password.
+    </div>
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="textinput">User Name</label>  
+	  <div class="col-md-4">
+	  <input id="textinput" name="name" type="text" placeholder="username" class="form-control input-md"> 
+	  </div>
+	</div>
+	
+	<!-- Password input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+	  <div class="col-md-4">
+	    <input id="passwordinput" name="password" type="password" placeholder="password" class="form-control input-md">
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <div class="col-md-8">
+	    <button id="button1id" name="button1id" type="submit" value="Login" class="btn btn-primary">Login</button>
+	    <a th:href="@{/sign_up}"><button id="button2id" name="button2id" type="button" value="SingUp" class="btn btn-info">SignUp</button></a>
+	  </div>
+	</div>
+	
+	</fieldset>
+	</form>
+</body>
+</html>
+

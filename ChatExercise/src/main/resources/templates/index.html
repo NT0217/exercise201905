@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ChatExercise</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"  type="text/css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	<script src="/js/app.js"></script>
+	<link rel="stylesheet" href="/css/chat.css"/>
+</head>
+<body>
+	<noscript>
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websocket relies on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</noscript>
+<div th:if="${loginUser != null}"><script th:inline="javascript">
+   /*<![CDATA[*/
+
+   var viewusername = [[${loginUser.userName}]];
+
+   /*]]>*/
+</script></div>
+<div class="messaging">
+	<div class="mesgs">
+	  <div class="msg_history">
+				<div class="message" th:each="message : ${messages}">
+					<div th:if="${loginUser.userName != message.user.name}">
+						<div class="incoming_msg">
+							<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+							<div class="received_msg">
+							<div class="received_withd_msg">
+								<div class="message__username" th:text="${message.user.name}">username</div>
+								<div class="message__text" th:text="${message.getBody()}"
+									th:name="body">
+								<p>Hoping today will be the most awesome day for you.</p>
+								</div>
+								<div class="message__timestamp"
+									th:text="${message.getCreatedAt()}" th:name="created_at">2019/01/10</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div th:if="${loginUser.userName == message.user.name}">
+						<div class="outgoing_msg">
+							<div class="sent_msg">
+								<div class="message__username" th:text="${message.user.name}">username</div>
+								<div class="message__text" th:text="${message.getBody()}"
+									th:name="body">
+								<p>Hoping today will be the most awesome day for you.</p>
+								</div>
+								<div class="message__timestamp"
+									th:text="${message.getCreatedAt()}" th:name="created_at">2019/01/10</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="message" id="message"></div>
+	  </div>
+	  <div class="type_msg">
+		<div class="input_msg_write">
+		  <input type="text" class="write_msg" id ="body" placeholder="Type a message" />
+		  <button class="msg_send_btn" type="button" id ="send"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+		</div>
+	  </div>
+	</div>
+  </div>
+	<div id="main-content" class="container">
+			<div class="col-md-6">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="connect">WebSocket connection:</label>
+						<button id="connect" class="btn btn-default" type="submit">Connect</button>
+						<button id="disconnect" class="btn btn-default" type="submit"
+							disabled="disabled">Disconnect</button>
+					</div>
+				</form>
+				<a href="javascript:logout.submit()"> <i
+					class="material-icons">lock_outline</i></a>
+			</div>
+		</div>
+</body>
+</html>
