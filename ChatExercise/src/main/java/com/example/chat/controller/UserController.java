@@ -65,7 +65,7 @@ public class UserController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String edit(@Validated UserForm form, BindingResult result, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
 		User user = userService.findOne(loginUserDetails.getUserId());
-				
+		
 		if(!form.getPassword().equals(form.getConfirmPassword())) {
 			result.rejectValue("password", "error.passwordConfirmation", "do not match.");
 		}
