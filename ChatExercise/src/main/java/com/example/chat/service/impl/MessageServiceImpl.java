@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.example.chat.entity.Message;
-import com.example.chat.repository.MessageRepository;
+import com.example.chat.db.repository.MessageRepository;
+import com.example.chat.db.entity.Message;
 import com.example.chat.service.MessageService;
 import com.example.chat.service.UserService;
 

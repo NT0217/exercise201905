@@ -3,7 +3,7 @@ package com.example.chat.security;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 
-import com.example.chat.entity.User;
+import com.example.chat.db.entity.User;
 
 
 public class LoginUserDetails extends org.springframework.security.core.userdetails.User{

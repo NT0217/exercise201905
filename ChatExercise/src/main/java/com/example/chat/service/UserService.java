@@ -1,6 +1,6 @@
 package com.example.chat.service;
 
-import com.example.chat.entity.User;
+import com.example.chat.db.entity.User;
 
 public interface UserService {
 	

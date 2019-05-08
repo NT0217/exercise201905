@@ -9,9 +9,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.chat.entity.User;
+import com.example.chat.db.repository.UserRepository;
+import com.example.chat.db.entity.User;
 import com.example.chat.form.UserForm;
-import com.example.chat.repository.UserRepository;
 import com.example.chat.security.LoginUserDetails;
 import com.example.chat.service.impl.UserServiceImpl;
 

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.chat.entity.Message;
-import com.example.chat.entity.SocketMessage;
+import com.example.chat.db.entity.Message;
+import com.example.chat.db.entity.SocketMessage;
 import com.example.chat.form.ChatForm;
 import com.example.chat.security.LoginUserDetails;
 import com.example.chat.service.impl.MessageServiceImpl;

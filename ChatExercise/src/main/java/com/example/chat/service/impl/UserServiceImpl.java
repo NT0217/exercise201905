@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.chat.entity.User;
-import com.example.chat.repository.UserRepository;
+import com.example.chat.db.repository.UserRepository;
+import com.example.chat.db.entity.User;
 import com.example.chat.service.UserService;
 
 @Service

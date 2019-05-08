@@ -1,4 +1,4 @@
-package com.example.chat.entity;
+package com.example.chat.db.entity;
 
 import java.sql.Timestamp;
 import java.util.Date;

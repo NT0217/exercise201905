@@ -1,10 +1,10 @@
-package com.example.chat.repository;
+package com.example.chat.db.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.chat.entity.User;
+import com.example.chat.db.entity.User;
 
 
 @Repository

@@ -1,4 +1,4 @@
-package com.example.chat.entity;
+package com.example.chat.db.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

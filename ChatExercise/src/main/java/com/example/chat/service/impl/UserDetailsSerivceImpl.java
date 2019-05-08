@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.chat.entity.User;
-import com.example.chat.repository.UserRepository;
+import com.example.chat.db.repository.UserRepository;
+import com.example.chat.db.entity.User;
 import com.example.chat.security.LoginUserDetails;
 
 @Service
