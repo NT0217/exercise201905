@@ -28,6 +28,27 @@
 
    /*]]>*/
 </script></div>
+<div class="top-bar">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-6 d-md-block d-none">
+              <p th:text="${loginUser.userName}"></p>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-md-end justify-content-between">
+                <div>
+  					<form th:action="@{/logout}" method="POST" name="logout">
+                		<a th:href="@{/edit}" class="edit-btn">
+                			<i class="fa fa-pencil"></i><span class="d-none d-md-inline-block">Edit User</span></a>
+                		<a href="javascript:logout.submit()" class="logout-btn">
+                			<i class="fa fa-sign-out"></i><span class="d-none d-md-inline-block">LogOut</span></a>
+					</form>
+				</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 <div class="messaging">
 	<div class="mesgs">
 	  <div class="msg_history">
@@ -82,8 +103,6 @@
 							disabled="disabled">Disconnect</button>
 					</div>
 				</form>
-				<a href="javascript:logout.submit()"> <i
-					class="material-icons">lock_outline</i></a>
 			</div>
 		</div>
 </body>
