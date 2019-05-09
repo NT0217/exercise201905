@@ -23,12 +23,10 @@ import musicgame.score.Score;
 public class ChallengeResult extends JPanel implements KeyListener,Runnable{
 
 	//チャレンジ用のリザルト
-	//め　ん　ど　く　さ
 	private static final int[] DIVIDE_NUM = {10,100,1000,10000,100000,1000000,10000000};
 	private static final int[] INCREASE_NUM = {1,10,100,1000,10000,100000,1000000,10000000};
 
 	//トータルのレートにより表示するメッセ
-	//一番下は煽り、一番上は褒めてる（暴言）
 	private static final String[] COMPLIMENT_MESSAGE = {"Do it seriously","Well...Good luck with that!","Good job!","Congratulations!"
 														,"Excellent!","Awesome!","WTF? U are crazy!"};
 
@@ -113,7 +111,7 @@ public class ChallengeResult extends JPanel implements KeyListener,Runnable{
 			try{
 				Thread.sleep(16);
 			}catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
@@ -183,6 +181,7 @@ public class ChallengeResult extends JPanel implements KeyListener,Runnable{
 		result = icon.getImage();
 	}
 
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -267,7 +266,7 @@ public class ChallengeResult extends JPanel implements KeyListener,Runnable{
 		thread = null;
 		isActive = false;
 		isIncrease = false;
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	@Override

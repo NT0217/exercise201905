@@ -80,12 +80,13 @@ public class MainMenuPanel extends JPanel implements KeyListener,Runnable{
 			try{
 				Thread.sleep(16);
 			}catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
 
 
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -130,13 +131,14 @@ public class MainMenuPanel extends JPanel implements KeyListener,Runnable{
 		thread = null;
 		isActive =false;
 		isMovement = false;
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if(!isMovement){

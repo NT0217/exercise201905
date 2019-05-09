@@ -12,10 +12,6 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 
 public class PlayMusic extends TimerTask{
-	/*
-	 * これMusicDisplayに書けばよくね？
-	 * そのうち移植手術する
-	 */
 
 	private static AudioFormat format = null;
 	private static DataLine.Info info =null;
@@ -46,7 +42,6 @@ public class PlayMusic extends TimerTask{
 		try{
 			controlByLinearScalar(control, vol);
 			line.start();
-			System.out.println("START!!!!!!!!!!");
 		}catch(Exception e){
 			e.printStackTrace();
 		}

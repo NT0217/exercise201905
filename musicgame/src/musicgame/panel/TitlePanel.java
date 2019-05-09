@@ -18,8 +18,6 @@ import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import com.sun.org.apache.bcel.internal.generic.LALOAD;
-
 import musicgame.Exe;
 import musicgame.panel.effect.LoadScreen;
 
@@ -83,7 +81,7 @@ public class TitlePanel extends JPanel implements KeyListener,Runnable{
 			try{
 				Thread.sleep(16);
 			}catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 
@@ -91,6 +89,7 @@ public class TitlePanel extends JPanel implements KeyListener,Runnable{
 
 
 	//描画処理
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -137,7 +136,7 @@ public class TitlePanel extends JPanel implements KeyListener,Runnable{
 		loadScreen = null;
 		thread = null;
 		isActive = false;
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	@Override

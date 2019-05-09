@@ -28,6 +28,7 @@ public class ExplosionDisp extends Thread{
 		g.drawImage(explosionImage, x, y, x+SIZE,y+SIZE,count*SIZE, 0, count * SIZE + SIZE, SIZE, null);
 	}
 
+	@Override
 	public void run(){
 		while(true){
 			count++;
@@ -38,7 +39,6 @@ public class ExplosionDisp extends Thread{
 			try{
 				Thread.sleep(16);
 			}catch (InterruptedException e) {
-				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}

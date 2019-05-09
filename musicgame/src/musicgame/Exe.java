@@ -1,6 +1,5 @@
 package musicgame;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -62,9 +61,7 @@ public class Exe extends JFrame{
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				// TODO 自動生成されたメソッド・スタブ
 				setResizable(false);
-				//setMinimumSize(new Dimension(640,480));
 				setTitle("Sound VolTekkun");
 				add(title);
 				title.startFlashTimer();
@@ -77,16 +74,7 @@ public class Exe extends JFrame{
 		});
 	}
 
-
-//	public static void main(String[] args) {
-//		Platform.setImplicitExit(false);
-//		Exe frame = new Exe();
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setLocationRelativeTo(null);
-//		frame.setVisible(true);
-//	}
 	//パネル切り替え処理
-	//サンプルから拾ってきたはずなんだけど魔改造してるせいでもうわけわからないので触ったらやばいところ（一番駄目な奴な）
 	public void PanelChange(JPanel jp , String str){
 		name = jp.getName();
 		this.str = str;
@@ -225,7 +213,7 @@ public class Exe extends JFrame{
 				Parts.clearList.set(challengeLevel*5+Parts.guageIndex, 1);
 				parts.saveClearData();
 			}
-			//なんかこの辺だけリザルトリムーブすると壊れるのでリムーブ無しで
+
 			Score.setEnd();
 			add(cresult);
 			cresult.initCresult();
@@ -233,7 +221,6 @@ public class Exe extends JFrame{
 			cresult.requestFocusInWindow();
 			jfxPanel.setScene(null);
 			jfxPanel.setVisible(false);
-			//応急処置何してんのかは知らん
 			invalidate();
 			validate();
 		}else{

@@ -62,7 +62,7 @@ public class MusicDisplay implements ListSelectionListener{
 	}
 
 	public String[] getMusiclist(){
-		String[] str = (String[])folderName.toArray(new String[0]);
+		String[] str = folderName.toArray(new String[0]);
 		return str;
 	}
 
@@ -75,10 +75,8 @@ public class MusicDisplay implements ListSelectionListener{
 			System.out.println("TESt");
 			if(str.equals(folderName.get(i))){
 				num = i;
-				System.out.println("NUM1"+num);
 			}
 		}
-		System.out.println("NUM2:"+num);
 		playMusic.read(musicList.get(num));
 	}
 

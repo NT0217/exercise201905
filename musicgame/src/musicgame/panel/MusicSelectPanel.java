@@ -115,9 +115,6 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 		loadHiscore();
 		loadLevel();
 		timer = new Timer();
-		for(int i=0; i<songHiscore.size(); i++){
-			System.out.println("ハイスコア"+songHiscore.get(i));
-		}
 	}
 
 	public void fadeIn(){
@@ -158,7 +155,7 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 			try{
 				Thread.sleep(16);
 			}catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
@@ -194,8 +191,6 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 				isUppress = false;
 				isDownpress = false;
 				loadMusicJucket();
-				System.out.println(mIndex);
-				System.out.println(songHiscore.get(mIndex));
 			}
 		}
 	}
@@ -228,6 +223,7 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 		oCursor = icon.getImage();
 	}
 
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -278,17 +274,6 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 			}
 		}
 	}
-
-//	private void drawSinCurve(Graphics g){
-//		Graphics2D g2 = (Graphics2D)g;
-//		x1 = -20; y1 = 300;
-//		for (int i = 1; i <= 100; i++){
-//			x0 = x1; y0 = y1;
-//			x1 = -20+(int)(i/20.0*200);
-//			y1 = 300-(int)(waveY*Math.sin(i/waveX*2*Math.PI));
-//			g2.drawLine(x0, y0, x1, y1);
-//		}
-//	}
 
 	private void drawLevel(Graphics g){
 		Font font = new Font(Font.SERIF, Font.PLAIN, 40);
@@ -422,7 +407,7 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 		isMovement = false;
 		savePlayOption();
 		Score.setDifficulty(Parts.guageIndex);
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	public int getMusicNum(){
@@ -587,14 +572,9 @@ public class MusicSelectPanel extends JPanel implements KeyListener,Runnable{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
 
 		sb.append(e.getKeyChar());
 		if(sb.length() >= 4){
-			if(sb.equals("auto")){
-				System.out.println("OK");
-			}
-			System.out.println(sb);
 			sb.delete(0, 4);
 		}
 		System.out.println(sb);

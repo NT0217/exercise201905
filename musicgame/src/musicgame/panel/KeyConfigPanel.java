@@ -97,11 +97,12 @@ public class KeyConfigPanel extends JPanel implements KeyListener,Runnable{
 			try{
 				Thread.sleep(16);
 			}catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
 
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.WHITE);
@@ -171,7 +172,7 @@ public class KeyConfigPanel extends JPanel implements KeyListener,Runnable{
 		isMovement = false;
 		isEscapepress =false;
 		isEnterpress = false;
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	@Override
@@ -245,6 +246,5 @@ public class KeyConfigPanel extends JPanel implements KeyListener,Runnable{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
 	}
 }

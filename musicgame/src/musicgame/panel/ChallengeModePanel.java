@@ -27,7 +27,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import musicgame.Exe;
-import musicgame.panel.MusicSelectPanel.OptionVisible;
 import musicgame.panel.effect.LoadScreen;
 import musicgame.part.Parts;
 import musicgame.score.Score;
@@ -119,7 +118,7 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 			try{
 				Thread.sleep(16);
 			}catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
@@ -136,6 +135,7 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 		oCursor = icon.getImage();
 	}
 
+	@Override
 	public void paintComponent(Graphics g){
 		x = 40;
 		y = 47;
@@ -277,7 +277,7 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 		isMovement = false;
 		savePlayOption();
 		Score.setDifficulty(Parts.guageIndex);
-		frame.PanelChange((JPanel)this, str,songList,listIndex);
+		frame.PanelChange(this, str,songList,listIndex);
 	}
 
 	public void returnpc(String str){
@@ -288,7 +288,7 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 		isActive = false;
 		savePlayOption();
 		Score.setDifficulty(Parts.guageIndex);
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	public int getMusicNum(){
@@ -314,7 +314,6 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 					if(listIndex != 0){
 						if(!isUppress){
 							isUppress = true;
-							System.out.println("up");
 							listIndex -=1;
 							cursorY -= 50;
 						}
@@ -323,7 +322,6 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 				if(key == KeyEvent.VK_DOWN){
 					if(listIndex != levelList.size()-1){
 						if(!isDownpress){
-							System.out.println("down");
 							isDownpress = true;
 							listIndex += 1;
 							cursorY +=50;
@@ -334,7 +332,6 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 					if(!isEnterpress){
 						isEnterpress = true;
 						isMovement = true;
-						System.out.println("enter");
 						loadScreen = new LoadScreen(false);
 					}
 				}
@@ -350,7 +347,6 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 			if(key == KeyEvent.VK_SHIFT){
 				optionInfoY = 183;
 				if(!isPlayOptionVisible && optionTimer == null){
-					System.out.println("TIMER");
 					isPlayOptionVisible = true;
 					optionTimer = new Timer();
 					optionTimer.schedule(new OptionVisible(),0,16);
@@ -358,14 +354,12 @@ public class ChallengeModePanel extends JPanel implements KeyListener,Runnable{
 			}
 
 			if(mod == KeyEvent.SHIFT_DOWN_MASK && key == KeyEvent.VK_UP){
-				System.out.println("↑");
 				if(oIndex != 0){
 					oIndex -= 1;
 					oCusrsorY -= 50;
 				}
 			}
 			if(mod == KeyEvent.SHIFT_DOWN_MASK && key == KeyEvent.VK_DOWN){
-				System.out.println("下");
 				if(oIndex != 3){
 					oIndex += 1;
 					oCusrsorY += 50;

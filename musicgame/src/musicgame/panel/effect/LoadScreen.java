@@ -5,27 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.math.BigDecimal;
-import java.security.SecureRandom;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 
 public class LoadScreen extends Thread{
 
 
-	/*
-	 * threadごり押ししようと思ったけどrepaintできねえええええええええええええええ＾ｗ＾
-	 * 描画するパネルにもthread導入しないとダメみたいですね
-	 * それするとカーソルとかのＴｉｍｅｒ全部いらないし
-	 * でもＴｈｒｅａｄ大量作成した時の動作が怖い作りたくない
-	 *
-	 * 閉店のとことかボムのとことか見るに大丈夫そうだけど作り直すのがくそ面倒くさいです
-	 *
-	 * とりあえずスレッドごり押しマンで作った
-	 * あとはランダムで画像読み込ますようにしましょう
-	 * フェードアウトの時にランダムで画像読み込みします。
-	 *
-	 */
 	private static Image loadImage;
 	private AlphaComposite composite;
 
@@ -69,6 +54,7 @@ public class LoadScreen extends Thread{
 		loadImage = icon.getImage();
 	}
 
+	@Override
 	public void run(){
 		while(true){
 			try{

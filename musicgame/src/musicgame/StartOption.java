@@ -1,9 +1,7 @@
 package musicgame;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,11 +32,6 @@ public class StartOption extends JFrame{
 		decision.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自動生成されたメソッド・スタブ
-				/*double magnification
-				 * Exe起動処理
-				 */
-				System.out.println("起動したよー＾ｗ＾");
 				for (int i = 0; i < magnificationSelection.length; i++) {
 					if(magnificationSelection[i].isSelected()){
 						System.out.println(magnificationSelection[i].getText());

@@ -20,13 +20,6 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Receiver;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.ShortMessage;
-import javax.sound.midi.Track;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -50,17 +43,6 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 	private static final int HEIGHT =480;
 	private static final int[] BOMB_POS = {193,258,323,388};
 	private static final int LANE_COVER_X = 199;
-	/* 燃え上がるやつ
-	private static final int CH_NUM = 119;
-	private static final int PC_NUM = 100;
-	private static final int NOTE_NUM = 85;
-	*/
-	/*　ハイハット
-	private static final int CH_NUM = 119;
-	private static final int PC_NUM = 36;
-	private static final int NOTE_NUM = 65;
-	*/
-
 	//リフレク
 	private static final int CH_NUM = 10;	//楽器
 	private static final int PC_NUM = 36;
@@ -168,7 +150,6 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 			ld[i] = new LaserDisp();
 		}
 		md = new MusicDisplay();
-		//play(大嘘)音源のパス渡してるだけ
 		md.play(humen);
 
 		isActive = true;
@@ -261,6 +242,7 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 		}
 	}
 
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		//背景黒く
@@ -418,11 +400,12 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 		md = null;
 		closed = null;
 		loadScreen = null;
-		frame.PanelChange((JPanel)this, str);
+		frame.PanelChange(this, str);
 	}
 
 	//ノーツ生成処理
 	class AddNotes extends TimerTask{
+		@Override
 		public void run(){
 			if(lane1Timinglist.get(cntNotes) == -1){
 				if(GORIOSHI != -1){
@@ -454,6 +437,7 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 	}
 	//閉店
 	class End extends TimerTask{
+		@Override
 		public void run(){
 			pc(frame.getPanelNames(4));
 		}
@@ -511,6 +495,7 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
+	@Override
 	public void keyPressed(KeyEvent e) {
 		int ekey = e.getKeyCode();
 		String key = String.valueOf(e.getKeyChar());
@@ -546,10 +531,6 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 		if(ekey == KeyEvent.VK_ESCAPE){
 			if(!isEscapepress && GORIOSHI != -1 && isStart){
 				isEscapepress = true;
-//				closed = new Closed();
-//				md.stop();
-//				new Timer().schedule(new End(), 5000);
-//				GORIOSHI = -1;
 				Score.setHpDeath();
 				isEscapepress = false;
 			}
@@ -558,9 +539,7 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 		if(ekey == KeyEvent.VK_UP){
 			if(!isUppress){
 				isUppress = true;
-				System.out.println("up");
 				if(laneCoverY != 0){
-					System.out.println("UP");
 					laneCoverY -= 10;
 				}
 			}
@@ -568,14 +547,11 @@ public class BemaniPanel extends JPanel implements Runnable,KeyListener{
 		if(ekey == KeyEvent.VK_DOWN){
 			if(!isDownpress){
 				isDownpress = true;
-				System.out.println("down");
 				if(laneCoverY != 480){
-					System.out.println("DOWN");
 					laneCoverY += 10;
 				}
 			}
 		}
-		System.out.println(e.getKeyCode());
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
