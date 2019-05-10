@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "massages")
+@Table(name = "messages")
 public class Message {
 
     @ManyToOne
